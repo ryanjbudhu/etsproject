@@ -8,20 +8,20 @@ module.exports = {
                 locateStrategy: 'xpath'
         },
             mainButton: {
-                selector: "//*[contains(text(), 'ENTER\ THE\ MAIN\ NAEP\ DATA\ EXPLORER')]",
+                selector: "//*[contains(text(), 'ENTER THE MAIN NAEP DATA EXPLORER')]",
                 locateStrategy: 'xpath'
+        },
+            subSelector:{
+                selector: "span[aria-owns=selSub_listbox]"
         },
             subSelect: {
-                selector: "//*[contains(text(), 'Select\ a\ Subject')]",
-                locateStrategy: 'xpath'
+                selector: "#selSub > option[value]"
         },
             graSelect: {
-                selector: "//*[contains(text(), 'Select\ a\ Grade')]",
-                locateStrategy: 'xpath'
+                selector: "#selGra > option[value]"
         },
             jurSelect: {
-                selector: "//*[contains(text(), 'Select\ a\ Juristiction')]",
-                locateStrategy: 'xpath'
+                selector: "#selJur > option[value]"
         }
     }
 }
