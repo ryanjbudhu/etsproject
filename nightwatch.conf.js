@@ -30,13 +30,27 @@ module.exports = {
         "waitForConditionTimeout": 5000 // sometimes internet is slow so wait.
       },
       "desiredCapabilities": { // use Chrome as the default browser for tests
-        "browserName": "chrome"
+        "browserName": "chrome",
+        "chromeOptions": {
+          "args": [
+            "--window-size=1200,1160",
+            // "--headless"
+          ]
+        }
       }
     },
     "chrome": {
       "desiredCapabilities": {
         "browserName": "chrome",
-        "javascriptEnabled": true // turn off to test progressive enhancement
+        "javascriptEnabled": true, // turn off to test progressive enhancement,
+        "chromeOptions": {
+          "args": [
+            `Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
+            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3`,
+            "--window-size=1200,1160",
+            // "--headless"
+          ]
+        }
       }
     }
   }
@@ -62,6 +76,14 @@ function imgpath (browser) {
   meta.push(a.name); // this is the test filename so always exists.
   var metadata = meta.join('~').toLowerCase().replace(/ /g, '');
   return SCREENSHOT_PATH + metadata + '_' + padLeft(FILECOUNT++) + '_';
+}
+
+// setup Jenkins environment
+// you can set this locally by using an .env file entry
+if (process.env.JENKINS_HOME) {
+  // add headless argument
+  module.exports.test_settings.default.desiredCapabilities.chromeOptions.args.push("headless");
+
 }
 
 module.exports.imgpath = imgpath;
