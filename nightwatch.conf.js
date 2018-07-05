@@ -83,6 +83,7 @@ function imgpath (browser) {
 if (process.env.JENKINS_HOME) {
   // add headless argument
   module.exports.test_settings.default.desiredCapabilities.chromeOptions.args.push("headless");
+  module.exports.test_settings.default.launch_url = "http://poseidon.research.ets.org/ndecore";
 
 }
 

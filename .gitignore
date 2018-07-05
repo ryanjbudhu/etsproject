@@ -1,9 +1,12 @@
 node_modules/
+bin/
+obj/
+.vspscc
 npm-debug.log
 nohup.out
 selenium-debug.log
 .DS_Store
-
+packages/
 # exclued selenium.jar from GitHub it's 21MB!
 nightwatch
 nightwatch/selenium.jar
@@ -11,6 +14,7 @@ nightwatch/selenium.jar
 # exclude chromedriver as its 12MB and changes frequently!
 nightwatch/chromedriver
 
-reports
+reports/
+_reports/
 screenshots
 .env
