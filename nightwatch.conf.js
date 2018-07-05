@@ -27,7 +27,7 @@ module.exports = {
         "path": './screenshots' // save screenshots here
       },
       "globals": {
-        "waitForConditionTimeout": 5000 // sometimes internet is slow so wait.
+        "waitForConditionTimeout": 15000 // sometimes internet is slow so wait.
       },
       "desiredCapabilities": { // use Chrome as the default browser for tests
         "browserName": "chrome",
@@ -82,9 +82,11 @@ function imgpath (browser) {
 // you can set this locally by using an .env file entry
 if (process.env.JENKINS_HOME) {
   // add headless argument
-  module.exports.test_settings.default.desiredCapabilities.chromeOptions.args.push("headless");
-  module.exports.test_settings.default.launch_url = "http://poseidon.research.ets.org/ndecore";
+  // module.exports.test_settings.default.desiredCapabilities.chromeOptions.args.push("headless");
+  // module.exports.test_settings.default.launch_url = "https://" + encodeURIComponent(process.env.IMS_USERNAME) +
+  //  ":" + encodeURIComponent(process.env.IMS_PASSWORD) + "@nrcpreview3.naepims.org/ndecore";
 
+    module.exports.test_settings.default.launch_url = "http://poseidon.research.ets.org/ndecore";
 }
 
 module.exports.imgpath = imgpath;
