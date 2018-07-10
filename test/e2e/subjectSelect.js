@@ -5,7 +5,6 @@ module.exports = { // addapted from: https://git.io/vodU0
   'Choose Subject': (client) => {//function(browser) {
     //const skipStep = "//*[contains(text(), 'SKIP\ THIS\ STEP')]"
     const page = client.page.findButton();//browser
-    var subArray = ["CIV"];
 
     page.navigate()   // Navigate to landing page and check the title of the page.
         .waitForElementVisible('body')
@@ -13,23 +12,31 @@ module.exports = { // addapted from: https://git.io/vodU0
 
         //.click('@subSelector');
 
-    client.execute('css selector', '#selSub > option[value]',function (choices){
+    /*client.execute('css selector', '#selSub > option[value]',function (choices){
         choices.value.forEach(function (value) {
             var elementID = value.ELEMENT;
             console.log('Checking Element - ' + elementID);
           });
-     });
+     });*/
               // How to save a screenshot:
               //.saveScreenshot(config.imgpath(browser) + 'nightwatch-roolz.png')
-    for (var i=0;i<subArray.length;i++){
+    for (var i=1;i<13;i++){
+        page
+            .waitForElementVisible("@mainButton")
+            .click("@subSelector");
+        client.pause(800);
+        page
+            .click(page.el('@subSelect',i));
+        client.expect.element(page.el('@subSelect',i)).is.present;
+        //client.expect.element("button[disabled='disabled']").is.not.present;
         client.pause(1000);
         page
-            .click("[value="+subArray[i]+"]");
-        client.expect.element('button[disabled=disabled]').is.not.present;
+            .click('@mainButton');
+        client.pause(3000);
         page
-            .click('@mainButton')
             .waitForElementVisible('body')
-            .assert.urlEquals('https://www.nationsreportcard.gov/ndecore/xplore/NDE');
+            .assert.urlEquals('https://www.nationsreportcard.gov/ndecore/xplore/NDE')
+            .click('.submit-button');
         client.back();
     }
     client.pause(3000);

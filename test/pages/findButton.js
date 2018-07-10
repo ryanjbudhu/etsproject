@@ -14,14 +14,27 @@ module.exports = {
             subSelector:{
                 selector: "span[aria-owns=selSub_listbox]"
         },
+            graSelector:{
+                selector: "span[aria-owns=selGra_listbox]"
+        },
+            jurSelector:{
+                selector: "span[aria-owns=selJur_listbox]"
+        },
             subSelect: {
-                selector: "#selSub > option[value]"
+                selector: "#selSub_listbox>li[data-offset-index='%d']"
         },
             graSelect: {
-                selector: "#selGra > option[value]"
+                selector: "#selGra>option[value='%s']"
         },
             jurSelect: {
-                selector: "#selJur > option[value]"
+                selector: "#selJur>option[value='%s']"
         }
-    }
+    },
+    commands:   [{
+        el: function(elementName,data){
+            var util = require('util');
+            var element = this.elements[elementName.slice(1)];
+            return util.format(element.selector,data);
+        }
+    }]
 }
