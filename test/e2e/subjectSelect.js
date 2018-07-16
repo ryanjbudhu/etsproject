@@ -20,7 +20,7 @@ module.exports = { // addapted from: https://git.io/vodU0
      });*/
               // How to save a screenshot:
               //.saveScreenshot(config.imgpath(browser) + 'nightwatch-roolz.png')
-    for (var i=1;i<13;i++){
+    for (var i=1;i<13;i++){//Click on subject and continue, for each subject
         page
             .waitForElementVisible("@mainButton")
             .click("@subSelector");
@@ -37,6 +37,9 @@ module.exports = { // addapted from: https://git.io/vodU0
             .waitForElementVisible('body')
             .assert.urlEquals('https://www.nationsreportcard.gov/ndecore/xplore/NDE')
             .click('.submit-button');
+
+        
+
         client.back();
     }
     client.pause(3000);
