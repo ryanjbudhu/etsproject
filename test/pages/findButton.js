@@ -24,10 +24,10 @@ module.exports = {
                 selector: "#selSub_listbox>li[data-offset-index='%d']"
         },
             graSelect: {
-                selector: "#selGra>option[value='%s']"
+                selector: "#selGra_listbox>li[data-offset-index='%d']"
         },
             jurSelect: {
-                selector: "#selJur>option[value='%s']"
+                selector: "#selJur_listbox>li[data-offset-index='%d']"
         }
     },
     commands:   [{

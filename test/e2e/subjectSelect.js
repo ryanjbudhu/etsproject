@@ -21,6 +21,7 @@ module.exports = { // addapted from: https://git.io/vodU0
               // How to save a screenshot:
               //.saveScreenshot(config.imgpath(browser) + 'nightwatch-roolz.png')
     for (var i=1;i<13;i++){//Click on subject and continue, for each subject
+        client.pause(2000);
         page
             .waitForElementVisible("@mainButton")
             .click("@subSelector");
@@ -30,17 +31,31 @@ module.exports = { // addapted from: https://git.io/vodU0
         client.expect.element(page.el('@subSelect',i)).is.present;
         //client.expect.element("button[disabled='disabled']").is.not.present;
         client.pause(1000);
+        var grades = client.elements('css selector','#selGra_listbox>li[data-offset-index]');
+        client.pause(1000);
         page
-            .click('@mainButton');
+            //.waitForElementVisible(page.el('@graSelect',1))
+            .click('@graSelector')
+            .click(page.el('@graSelect',1))
+        client.pause(1000);
+        page.click('@mainButton');
         client.pause(3000);
         page
-            .waitForElementVisible('body')
-            .assert.urlEquals('https://www.nationsreportcard.gov/ndecore/xplore/NDE')
-            .click('.submit-button');
-
+            .waitForElementVisible('xplore-root')
+            .assert.urlEquals('https://www.nationsreportcard.gov/ndecore/xplore/NDE');
+        if(client.element('css selector','.submit-button')){
+            page.click('.submit-button');
+        }
+        client
+            .back()
+            .pause(2000);
+        if(client.element('css selector','.submit-button')){
+            page.click('.submit-button');
+        }
+        //} 
         
 
-        client.back();
+       
     }
     client.pause(3000);
     
