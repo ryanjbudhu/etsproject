@@ -20,6 +20,20 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click('.submit-button'); //Click accept terms button
     client.pause(1000);
 
+    page
+        .click('@subSelector')
+        .click(page.el('@subSelect',3))
+        .api.pause(2000)
+        .click('@graSelector')
+        .click(page.el('@graSelect',1))
+        .api.pause(2000)
+        .click('@yearSelector')
+        .click(page.el('@yearSelect',3))
+        .api.pause(2000)
+        .click('@scaSelector')
+        .click(page.el('@scaSelect',4))
+        ;
+
     client.end();
   }
 };

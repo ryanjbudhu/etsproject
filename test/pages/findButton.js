@@ -28,6 +28,18 @@ module.exports = {
         },
             jurSelect: {
                 selector: "#selJur_listbox>li[data-offset-index='%d']"
+        },
+            yearSelector: {
+                selector: "span[aria-owns~=selYear_listbox]"
+        },
+            scaSelector: {
+                selector: "span[aria-owns~=selSca_listbox]"
+        },
+            yearSelect: {
+                selector: "#selYear_listbox>li[data-offset-index='%d']"
+        },
+            yearSelect: {
+                selector: "#selSca_listbox>li[data-offset-index='%d']"
         }
     },
     commands:   [{
