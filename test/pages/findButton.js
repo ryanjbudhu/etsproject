@@ -12,34 +12,78 @@ module.exports = {
                 locateStrategy: 'xpath'
         },
             subSelector:{
-                selector: "span[aria-owns=selSub_listbox]"
+                selector: "span[aria-owns='selSub_listbox']"
         },
-            graSelector:{
-                selector: "span[aria-owns=selGra_listbox]"
+            newSubSelector:{
+                selector: "#selSub"
         },
-            jurSelector:{
-                selector: "span[aria-owns=selJur_listbox]"
+            newGraSelector:{
+                selector: "#selGra"
         },
             subSelect: {
                 selector: "#selSub_listbox>li[data-offset-index='%d']"
         },
+            graSelector:{
+                selector: "span[aria-owns='selGra_listbox']"
+        },
             graSelect: {
                 selector: "#selGra_listbox>li[data-offset-index='%d']"
         },
+            jurSelector:{
+                selector: "span[aria-owns='selJur_listbox']"
+        }, 
             jurSelect: {
                 selector: "#selJur_listbox>li[data-offset-index='%d']"
         },
             yearSelector: {
-                selector: "span[aria-owns~=selYear_listbox]"
-        },
-            scaSelector: {
-                selector: "span[aria-owns~=selSca_listbox]"
+                selector: "[aria-owns~=selYear_listbox]"
         },
             yearSelect: {
                 selector: "#selYear_listbox>li[data-offset-index='%d']"
         },
-            yearSelect: {
+            scaSelector: {
+                selector: "[aria-owns~=selSca_listbox]"
+        },
+            scaSelect: {
                 selector: "#selSca_listbox>li[data-offset-index='%d']"
+        },
+            accordianSelector: {
+                selector: "accordion-panel[panel-type='%s']>div[class='panel']"// JUR|VAR|STAT
+        },
+            nationalTab: {
+                selector: "//*[contains(text(), 'National",
+                locateStrategy: 'xpath'
+        },
+            nationalSelect: {
+                selector: "#%s"
+        },
+            stateTab: {
+                selector: "//*[contains(text(), 'State",
+                locateStrategy: 'xpath'
+        },
+            stateSelect: {
+                selector: "#%s"
+        },
+            distTab: {
+                selector: "//*[contains(text(), 'District",
+                locateStrategy: 'xpath'
+        },
+            distSelect: {
+                selector: "#%s"
+        },
+            terriTab: {
+                selector: "//*[contains(text(), 'Territory/Other",
+                locateStrategy: 'xpath'
+        },
+            terriSelect: {
+                selector: "#%s"
+        },
+            regionTab: {
+                selector: "//*[contains(text(), 'Region",
+                locateStrategy: 'xpath'
+        },
+            regionSelect: {
+                selector: "#%s"
         }
     },
     commands:   [{
