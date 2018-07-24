@@ -51,35 +51,35 @@ module.exports = {
                 selector: "accordion-panel[panel-type='%s']>div[class='panel']"// JUR|VAR|STAT
         },
             nationalTab: {
-                selector: "//*[contains(text(), 'National",
+                selector: "//*[contains(text(), 'National')]",
                 locateStrategy: 'xpath'
         },
             nationalSelect: {
                 selector: "#%s"
         },
             stateTab: {
-                selector: "//*[contains(text(), 'State",
+                selector: "//*[contains(text(), 'State')]",
                 locateStrategy: 'xpath'
         },
             stateSelect: {
                 selector: "#%s"
         },
             distTab: {
-                selector: "//*[contains(text(), 'District",
+                selector: "//*[contains(text(), 'District')]",
                 locateStrategy: 'xpath'
         },
-            distSelect: {
-                selector: "#%s"
+            jurisSelect: {
+                selector: "#jurisTreeView_%d > input"
         },
             terriTab: {
-                selector: "//*[contains(text(), 'Territory/Other",
+                selector: "//*[contains(text(), 'Territory/Other')]",
                 locateStrategy: 'xpath'
         },
             terriSelect: {
                 selector: "#%s"
         },
             regionTab: {
-                selector: "//*[contains(text(), 'Region",
+                selector: "//*[contains(text(), 'Region')]",
                 locateStrategy: 'xpath'
         },
             regionSelect: {

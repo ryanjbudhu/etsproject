@@ -19,7 +19,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .assert.urlEquals("https://www.nationsreportcard.gov/ndecore/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
-
+/*
     page
         .click('@subSelector');
         client.pause(1000);
@@ -44,22 +44,27 @@ module.exports = { // addapted from: https://git.io/vodU0
     page
         .click(page.el('@scaSelect',4));//   Data analysis...
     client.pause(2000);
+    */
 
     //Open Jurisdiction tab
     page
         .click(page.el('@accordianSelector','JUR'));
-    /*    .click('@stateTab')
-        .click(page.el('@stateSelect','checkbox_9269d840-de25-40e5-b5cd-8823c8d570ae'))
-        .click('@distTab')
-        .click(page.el('@distSelect','checkbox_e0c86fc8-7894-46cd-8a62-6d87c821c92d'))
-        .click('@terriTab')
-        .click(page.el('@terriSelect','checkbox_fa580993-057e-4ab2-81fa-9b10c2b81a3f'))
-        .click('@regionTab')
-        .click(page.el('regionSelect','checkbox_2d06b36d-d616-4289-8739-05180c8d6a75'))
-        .click(page.el('@accordianSelector','VAR'))
-        .click('#GENDER|Gender')
-        ;*/
     client.pause(2000);
+    page
+        .click('@stateTab');
+    client.pause(2000);
+    page
+        .click(page.el('@jurisSelect','1'))
+        .click('@distTab')
+        .click(page.el('@jurisSelect','2'))
+        .click('@terriTab')
+        .click(page.el('@jurisSelect','3'))
+        .click('@regionTab')
+        .click(page.el('@jurisSelect','4'))
+        .click(page.el('@accordianSelector','VAR'));
+    /*    .click('#GENDER|Gender')
+        ;*/
+    client.pause(5000);
     client.end();
   }
 };
