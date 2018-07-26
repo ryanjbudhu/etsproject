@@ -4,11 +4,11 @@ module.exports = {
     },
     elements: {
             skipStep: {
-                selector: "//*[contains(text(), 'SKIP\ THIS\ STEP')]",
+                selector: "//a[contains(text(), 'SKIP\ THIS\ STEP')]",
                 locateStrategy: 'xpath'
         },
             mainButton: {
-                selector: "//*[contains(text(), 'ENTER THE MAIN NAEP DATA EXPLORER')]",
+                selector: "//button[contains(text(), 'ENTER THE MAIN NAEP DATA EXPLORER')]",
                 locateStrategy: 'xpath'
         },
             subSelector:{
@@ -50,40 +50,24 @@ module.exports = {
             accordianSelector: {
                 selector: "accordion-panel[panel-type='%s']>div[class='panel']"// JUR|VAR|STAT
         },
-            nationalTab: {
-                selector: "//*[contains(text(), 'National')]",
-                locateStrategy: 'xpath'
-        },
             nationalSelect: {
                 selector: "#%s"
         },
-            stateTab: {
-                selector: "//*[contains(text(), 'State')]",
+            jurisTab: {
+                selector: "//li[contains(text(), '%s')]",
                 locateStrategy: 'xpath'
         },
             stateSelect: {
-                selector: "#%s"
-        },
-            distTab: {
-                selector: "//*[contains(text(), 'District')]",
-                locateStrategy: 'xpath'
+                selector: "span < input"
         },
             jurisSelect: {
-                selector: "#jurisTreeView_%d > input"
-        },
-            terriTab: {
-                selector: "//*[contains(text(), 'Territory/Other')]",
-                locateStrategy: 'xpath'
+                selector: "#jurisTreeView_%d"// > input"
         },
             terriSelect: {
-                selector: "#%s"
-        },
-            regionTab: {
-                selector: "//*[contains(text(), 'Region')]",
-                locateStrategy: 'xpath'
+                selector: "span < input"
         },
             regionSelect: {
-                selector: "#%s"
+                selector: "span < input"
         }
     },
     commands:   [{

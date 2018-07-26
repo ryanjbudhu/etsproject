@@ -50,18 +50,40 @@ module.exports = { // addapted from: https://git.io/vodU0
     page
         .click(page.el('@accordianSelector','JUR'));
     client.pause(2000);
+    client.useXpath();
     page
-        .click('@stateTab');
+        .click(page.el('@jurisTab','State'));
+        //page.click('@stateTab');
     client.pause(2000);
-    page
-        .click(page.el('@jurisSelect','1'))
-        .click('@distTab')
-        .click(page.el('@jurisSelect','2'))
-        .click('@terriTab')
-        .click(page.el('@jurisSelect','3'))
-        .click('@regionTab')
-        .click(page.el('@jurisSelect','4'))
-        .click(page.el('@accordianSelector','VAR'));
+    client.useCss();
+        //page.click(page.el('@jurisSelect','1'));
+        page.click('input:first-child');
+    client.pause(2000);
+    client.useXpath();
+        page.click(page.el('@jurisTab','District'));
+        //page.click('@distTab');
+    client.pause(2000);
+    client.useCss();
+        //page.click(page.el('@jurisSelect','2'));
+        page.click('input:first-child');
+    client.pause(2000);
+    client.useXpath();
+        page.click(page.el('@jurisTab','Territory/Other'));
+        //page.click('@terriTab');
+    client.pause(2000);
+    client.useCss();
+        //page.click(page.el('@jurisSelect','3'));
+        page.click('input:first-child');
+    client.pause(2000);
+    client.useXpath();
+        page.click(page.el('@jurisTab','Region'));
+        //page.click('@regionTab');
+    client.pause(2000);
+    client.useCss();
+        //page.click(page.el('@jurisSelect','4'));
+        page.click('input:first-child');
+    client.pause(2000);
+        page.click(page.el('@accordianSelector','VAR'));
     /*    .click('#GENDER|Gender')
         ;*/
     client.pause(5000);
