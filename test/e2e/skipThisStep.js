@@ -24,69 +24,126 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click('@subSelector');
         client.pause(1000);
     page
-        .click(page.el('@subSelect',4));//   Mathematics
+        .click(page.el('@subSelect','4'));//   Mathematics
     client.pause(2000);
     page
         .click('@graSelector');
         client.pause(1000);
     page
-        .click(page.el('@graSelect',1));//   Grade 4
+        .click(page.el('@graSelect','1'));//   Grade 4
     client.pause(2000);
     page    
         .click('@yearSelector');
         client.pause(1000);
     page
-        .click(page.el('@yearSelect',3));//  2015
+        .click(page.el('@yearSelect','3'));//  2015
     client.pause(2000);
     page
         .click('@scaSelector');
     client.pause(1000);
     page
-        .click(page.el('@scaSelect',4));//   Data analysis...
+        .click(page.el('@scaSelect','4'));//   Data analysis...
     client.pause(2000);
     */
 
     //Open Jurisdiction tab
+    var checkbox = page.el('@jurisSelect','1');
     page
         .click(page.el('@accordianSelector','JUR'));
-    client.pause(2000);
-    client.useXpath();
-    page
-        .click(page.el('@jurisTab','State'));
-        //page.click('@stateTab');
-    client.pause(2000);
-    client.useCss();
-        //page.click(page.el('@jurisSelect','1'));
-        page.click('input:first-child');
-    client.pause(2000);
-    client.useXpath();
+
+    client.pause(1000)
+    .useXpath();
+
+    page.click(page.el('@jurisTab','State'));
+
+    client.pause(1000)
+    .useCss();
+
+    client.elements('css selector', checkbox,
+        function(result){
+            for(var i in result.value){
+                this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
+                    page.click("label[for='"+result.value+"']");
+                    //client.pause(10);
+                });
+            }
+        });
+
+    client.pause(1000)
+    .useXpath();
+
         page.click(page.el('@jurisTab','District'));
-        //page.click('@distTab');
-    client.pause(2000);
-    client.useCss();
-        //page.click(page.el('@jurisSelect','2'));
-        page.click('input:first-child');
-    client.pause(2000);
-    client.useXpath();
+
+    client.pause(1000)
+    .useCss();
+
+    page.assert.title('NDE Core Web');
+    checkbox = page.el('@jurisSelect','2');
+    console.log(checkbox);
+
+    client
+        .elements('css selector', checkbox,
+        function(result){
+            for(var i in result.value){
+                this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
+                    page.click("label[for='"+result.value+"']");
+                    //client.pause(100);
+                });
+            }
+        });
+
+    client.pause(1000)
+    .useXpath();
+
         page.click(page.el('@jurisTab','Territory/Other'));
-        //page.click('@terriTab');
-    client.pause(2000);
-    client.useCss();
-        //page.click(page.el('@jurisSelect','3'));
-        page.click('input:first-child');
-    client.pause(2000);
-    client.useXpath();
+
+    client.pause(1000)
+    .useCss();
+
+    page.assert.title('NDE Core Web');
+    checkbox = page.el('@jurisSelect','3');
+    console.log(checkbox);
+
+    client
+        .elements('css selector', checkbox,
+            function(result){
+                for(var i in result.value){
+                    this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
+                        page.click("label[for='"+result.value+"']");
+                        //client.pause(10);
+                    });
+                }
+            });
+
+    client.pause(1000)
+    .useXpath();
+
         page.click(page.el('@jurisTab','Region'));
-        //page.click('@regionTab');
-    client.pause(2000);
-    client.useCss();
-        //page.click(page.el('@jurisSelect','4'));
-        page.click('input:first-child');
-    client.pause(2000);
+
+    client.pause(1000)
+    .useCss();
+    
+    page.assert.title('NDE Core Web');
+    checkbox = page.el('@jurisSelect','4');
+    console.log(checkbox);
+    client
+        .elements('css selector', checkbox,
+        function(result){
+            for(var i in result.value){
+                this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
+                    page.click("label[for='"+result.value+"']");
+                    //client.pause(10);
+                });
+            }
+        });
+
+
+    //VARIABLE Tab
+    client.pause(1000);
         page.click(page.el('@accordianSelector','VAR'));
-    /*    .click('#GENDER|Gender')
-        ;*/
-    client.pause(5000);
-    client.end();
+    client.pause(1000);
+        page.click("label[for='GENDER|Gender']");
+    client.pause(6000)
+    .end();
   }
 };

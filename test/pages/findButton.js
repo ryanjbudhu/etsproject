@@ -50,24 +50,12 @@ module.exports = {
             accordianSelector: {
                 selector: "accordion-panel[panel-type='%s']>div[class='panel']"// JUR|VAR|STAT
         },
-            nationalSelect: {
-                selector: "#%s"
-        },
             jurisTab: {
                 selector: "//li[contains(text(), '%s')]",
                 locateStrategy: 'xpath'
         },
-            stateSelect: {
-                selector: "span < input"
-        },
             jurisSelect: {
-                selector: "#jurisTreeView_%d"// > input"
-        },
-            terriSelect: {
-                selector: "span < input"
-        },
-            regionSelect: {
-                selector: "span < input"
+                selector: "#jurisTreeView_%s > ul > li > ul > li > div > span > span > label"
         }
     },
     commands:   [{
