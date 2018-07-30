@@ -79,7 +79,6 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     page.assert.title('NDE Core Web');
     checkbox = page.el('@jurisSelect','2');
-    console.log(checkbox);
 
     client
         .elements('css selector', checkbox,
@@ -102,7 +101,6 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     page.assert.title('NDE Core Web');
     checkbox = page.el('@jurisSelect','3');
-    console.log(checkbox);
 
     client
         .elements('css selector', checkbox,
@@ -125,7 +123,6 @@ module.exports = { // addapted from: https://git.io/vodU0
     
     page.assert.title('NDE Core Web');
     checkbox = page.el('@jurisSelect','4');
-    console.log(checkbox);
     client
         .elements('css selector', checkbox,
         function(result){
@@ -142,8 +139,35 @@ module.exports = { // addapted from: https://git.io/vodU0
     client.pause(1000);
         page.click(page.el('@accordianSelector','VAR'));
     client.pause(1000);
-        page.click("label[for='GENDER|Gender']");
-    client.pause(6000)
-    .end();
+    page.click("label[for='GENDER|Gender']");
+    client.setValue('input[aria-labelledby="var_searchInputTxt"]','books');
+    page.click('span[aria-labelledby="var_searchBtn"]');
+   
+    client.pause(3000);
+    page
+        .click(page.el('@variableSearch','B000904'))
+    //Combine Variable Categories
+        .click('combine-var-modal')
+        .click('label[for="cvar2"')
+        .click('label[for="cvar3"');
+    client
+        .assert.attributeEquals('button[aria-labelledby="create_btn_var"','disabled','true','Create button is disabled')
+        .setValue('#varCombName','Not Yes');
+    page
+        .click('button[aria-labelledby="create_btn_var"')
+        .click('ul.modal-action-buttons > li > button.submit-button');
+
+
+    client.pause(2000);
+    //STATISTIC Tab
+    page
+        .click(page.el('@accordianSelector','STAT'))
+        .waitForElementVisible('@percentiles','Statistic tab is visible')
+        .click('@percentiles');
+    
+
+    client.pause(8000);
+
+    client.end();
   }
 };

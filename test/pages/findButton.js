@@ -14,12 +14,6 @@ module.exports = {
             subSelector:{
                 selector: "span[aria-owns='selSub_listbox']"
         },
-            newSubSelector:{
-                selector: "#selSub"
-        },
-            newGraSelector:{
-                selector: "#selGra"
-        },
             subSelect: {
                 selector: "#selSub_listbox>li[data-offset-index='%d']"
         },
@@ -56,6 +50,13 @@ module.exports = {
         },
             jurisSelect: {
                 selector: "#jurisTreeView_%s > ul > li > ul > li > div > span > span > label"
+        },
+            variableSearch: {
+                selector: "[for=comparison%s] > span.input-checkbox"
+        },
+            percentiles: {
+                selector: "//*[@id='statTreeView']/ul/li[5]/div/span[2]/span/label",
+                locateStrategy: 'xpath'
         }
     },
     commands:   [{
