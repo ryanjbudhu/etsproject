@@ -57,7 +57,10 @@ module.exports = {
             percentiles: {
                 selector: "//*[@id='statTreeView']/ul/li[5]/div/span[2]/span/label",
                 locateStrategy: 'xpath'
-        }
+        },
+            crosstab: {
+                selector: '//*[@id="combineCTabTreeView"]/ul/li[%s]/div/span[1]/label'
+            }
     },
     commands:   [{
         el: function(elementName,data){

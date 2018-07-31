@@ -19,7 +19,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .assert.urlEquals("https://www.nationsreportcard.gov/ndecore/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
-/*
+/**/
     page
         .click('@subSelector');
         client.pause(1000);
@@ -44,7 +44,7 @@ module.exports = { // addapted from: https://git.io/vodU0
     page
         .click(page.el('@scaSelect','4'));//   Data analysis...
     client.pause(2000);
-    */
+    
 
     //Open Jurisdiction tab
     var checkbox = page.el('@jurisSelect','1');
@@ -145,25 +145,50 @@ module.exports = { // addapted from: https://git.io/vodU0
    
     client.pause(3000);
     page
-        .click(page.el('@variableSearch','B000904'))
+        .click(page.el('@variableSearch','B013801'))
     //Combine Variable Categories
         .click('combine-var-modal')
         .click('label[for="cvar2"')
         .click('label[for="cvar3"');
     client
         .assert.attributeEquals('button[aria-labelledby="create_btn_var"','disabled','true','Create button is disabled')
-        .setValue('#varCombName','Not Yes');
+        .setValue('#varCombName','More than 10');
     page
         .click('button[aria-labelledby="create_btn_var"')
         .click('ul.modal-action-buttons > li > button.submit-button');
 
+    client.pause(1500);
+    //Create Crosstab
+    page
+        .click('create-crosstab-modal');
+    client.useXpath().pause(600);
+    page
+        .click(page.el('@crosstab','1'))
+        .click(page.el('@crosstab','2'));
 
-    client.pause(2000);
+    client.useCss()
+        .assert.attributeEquals('button[aria-labelledby="create_btn_ctab"','disabled','true','Create button is disabled')
+        .setValue('#varCrtName','Books in home by gender');
+    page
+        .click('button[aria-labelledby="create_btn_ctab"')
+        .click('ul.modal-action-buttons > li > button.submit-button');
+
+
+    client.pause(1000);
     //STATISTIC Tab
     page
         .click(page.el('@accordianSelector','STAT'))
         .waitForElementVisible('@percentiles','Statistic tab is visible')
-        .click('@percentiles');
+        .click('@percentiles')
+
+        //Decimal places = 2
+        .click('global-format-options')
+        .click('global-options-window > div > div.modal-window-content > div:nth-child(4) > ul > li:nth-child(3) > label')
+        .click('button.submit-button');
+
+    client.expect.element("button[aria-describedby='createReportReadingText'").to.not.have.attribute('disabled');
+
+    page.click("button[aria-describedby='createReportReadingText'");
     
 
     client.pause(8000);
