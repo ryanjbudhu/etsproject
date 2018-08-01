@@ -19,7 +19,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .assert.urlEquals("https://www.nationsreportcard.gov/ndecore/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
-/*
+/**/
     page
         .click('@subSelector');
         client.pause(1000);
@@ -45,7 +45,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click(page.el('@scaSelect','4'));//   Data analysis...
     client.pause(2000);
     
-*/
+
     //Open Jurisdiction tab
     var checkbox = page.el('@jurisSelect','1');
     page
@@ -61,11 +61,11 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     client.elements('css selector', checkbox,
         function(result){
-            console.log(result.value[0]);
-            for(var i=0;i<result.length/2; i+=2){
-                this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result+"']");
-                    console.log(result);
+            var repeat = Math.floor(Math.random()*result.value.length);
+            for(var i=0;i<repeat; i++){
+                var k = Math.floor(Math.random()*result.value.length);
+                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
+                    page.click("label[for='"+result.value+"']");
                 });
             }
         });
@@ -84,10 +84,11 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            for(var i=0;i<result.length/2; i+=2){
-                this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result+"']");
-                    //client.pause(100);
+            var repeat = Math.floor(Math.random()*result.value.length);
+            for(var i=0;i<repeat; i++){
+                var k = Math.floor(Math.random()*result.value.length);
+                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
+                    page.click("label[for='"+result.value+"']");
                 });
             }
         });
@@ -105,14 +106,15 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     client
         .elements('css selector', checkbox,
-            function(result){
-                for(var i=0;i<result.length/2; i+=2){
-                    this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                        page.click("label[for='"+result+"']");
-                        //client.pause(10);
-                    });
-                }
-            });
+        function(result){
+            var repeat = Math.floor(Math.random()*result.value.length);
+            for(var i=0;i<repeat; i++){
+                var k = Math.floor(Math.random()*result.value.length);
+                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
+                    page.click("label[for='"+result.value+"']");
+                });
+            }
+        });
 
     client.pause(1000)
     .useXpath();
@@ -127,15 +129,16 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            for(var i=0;i<result.length/2; i+=2){
-                this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result+"']");
-                    //client.pause(10);
+            var repeat = Math.floor(Math.random()*result.value.length);
+            for(var i=0;i<repeat; i++){
+                var k = Math.floor(Math.random()*result.value.length);
+                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
+                    page.click("label[for='"+result.value+"']");
                 });
             }
         });
 
-/*
+/**/
     //VARIABLE Tab
     client.pause(1000);
         page.click(page.el('@accordianSelector','VAR'));
@@ -196,7 +199,8 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click('#report_0 > div.report-header > div > div.text-right > button.show-report-options')
         .waitForElementVisible('@findTable',200000);
     
-*/
+
+
     client.pause(8000);
 
     client.end();
