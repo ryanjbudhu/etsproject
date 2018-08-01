@@ -19,7 +19,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .assert.urlEquals("https://www.nationsreportcard.gov/ndecore/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
-/**/
+/*
     page
         .click('@subSelector');
         client.pause(1000);
@@ -45,7 +45,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click(page.el('@scaSelect','4'));//   Data analysis...
     client.pause(2000);
     
-
+*/
     //Open Jurisdiction tab
     var checkbox = page.el('@jurisSelect','1');
     page
@@ -61,10 +61,11 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     client.elements('css selector', checkbox,
         function(result){
-            for(var i in result.value){
+            console.log(result.value[0]);
+            for(var i=0;i<result.length/2; i+=2){
                 this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result.value+"']");
-                    //client.pause(10);
+                    page.click("label[for='"+result+"']");
+                    console.log(result);
                 });
             }
         });
@@ -83,9 +84,9 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            for(var i in result.value){
+            for(var i=0;i<result.length/2; i+=2){
                 this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result.value+"']");
+                    page.click("label[for='"+result+"']");
                     //client.pause(100);
                 });
             }
@@ -105,9 +106,9 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
             function(result){
-                for(var i in result.value){
+                for(var i=0;i<result.length/2; i+=2){
                     this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                        page.click("label[for='"+result.value+"']");
+                        page.click("label[for='"+result+"']");
                         //client.pause(10);
                     });
                 }
@@ -126,15 +127,15 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            for(var i in result.value){
+            for(var i=0;i<result.length/2; i+=2){
                 this.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result.value+"']");
+                    page.click("label[for='"+result+"']");
                     //client.pause(10);
                 });
             }
         });
 
-
+/*
     //VARIABLE Tab
     client.pause(1000);
         page.click(page.el('@accordianSelector','VAR'));
@@ -189,8 +190,13 @@ module.exports = { // addapted from: https://git.io/vodU0
     client.expect.element("button[aria-describedby='createReportReadingText'").to.not.have.attribute('disabled');
 
     page.click("button[aria-describedby='createReportReadingText'");
-    
 
+    //Show report data for first report
+    page
+        .click('#report_0 > div.report-header > div > div.text-right > button.show-report-options')
+        .waitForElementVisible('@findTable',200000);
+    
+*/
     client.pause(8000);
 
     client.end();
