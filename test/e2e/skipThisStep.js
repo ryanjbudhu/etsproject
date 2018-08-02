@@ -1,7 +1,5 @@
-//var config = require('../../nightwatch.conf.js');
-//var xplorePage = "https://www.nationsreportcard.gov/ndecore";
+var config = require('../../nightwatch.conf.js');
 var config = require('../../poseidon.conf.js');
-var xplorePage = "http://poseidon.research.ets.org/ndecoretest";
 
 function clickBoxes(result,page,client){
     var repeat = Math.floor(Math.random()*result.value.length);
