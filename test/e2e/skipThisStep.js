@@ -1,4 +1,7 @@
-var config = require('../../nightwatch.conf.js');
+//var config = require('../../nightwatch.conf.js');
+//var xplorePage = "https://www.nationsreportcard.gov/ndecore";
+var config = require('../../poseidon.conf.js');
+var xplorePage = "http://poseidon.research.ets.org/ndecoretest";
 
 function clickBoxes(result,page,client){
     var repeat = Math.floor(Math.random()*result.value.length);
@@ -25,7 +28,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         // Skip entering criteria and go to xplore page with no filters.
         .click('@skipStep')
         .waitForElementVisible('.modal-dialog')
-        .assert.urlEquals("http://poseidon.research.ets.org/ndecoretest/xplore/NDE")
+        .assert.urlEquals(client.launch_url+"/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
 /**/

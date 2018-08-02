@@ -21,7 +21,7 @@ module.exports = {
   },
   "test_settings": {
     "default": {
-      "launch_url": "https://www.nationsreportcard.gov/ndecore",
+      "launch_url": "http://poseidon.research.ets.org/ndecoretest",
       "screenshots": {
         "enabled": true, // if you want to keep screenshots
         "path": './screenshots' // save screenshots here
