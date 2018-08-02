@@ -2,7 +2,6 @@ var config = require('../../nightwatch.conf.js');
 
 function clickBoxes(result,page,client){
     var repeat = Math.floor(Math.random()*result.value.length);
-    repeat=2;
     for(var i=0;i<repeat; i++){
         var k = Math.floor(Math.random()*result.value.length);
         client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
