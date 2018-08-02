@@ -21,7 +21,7 @@ module.exports = {
   },
   "test_settings": {
     "default": {
-      "launch_url": "http://poseidon.research.ets.org/ndecoretest/xplore/NDE",
+      "launch_url": "http://poseidon.research.ets.org/ndecoretest/landing",
       "screenshots": {
         "enabled": true, // if you want to keep screenshots
         "path": './screenshots' // save screenshots here

@@ -1,10 +1,20 @@
 var config = require('../../nightwatch.conf.js');
 
+function clickBoxes(result,page,client){
+    var repeat = Math.floor(Math.random()*result.value.length);
+    repeat=2;
+    for(var i=0;i<repeat; i++){
+        var k = Math.floor(Math.random()*result.value.length);
+        client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
+            page.click("label[for='"+result.value+"']");
+        });
+    }
+}
+
 module.exports = { // addapted from: https://git.io/vodU0
   '@tags': ['skipThisStep'],
-  'Skip This Step': (client) => {//function(browser) {
-    //const skipStep = "//*[contains(text(), 'SKIP\ THIS\ STEP')]"
-    const page = client.page.findButton();//browser
+  'Skip This Step': (client) => {
+    const page = client.page.findButton();
 
     page.navigate()   // Navigate to landing page and check the title of the page.
         .waitForElementVisible('body')
@@ -19,7 +29,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .assert.urlEquals("http://poseidon.research.ets.org/ndecoretest/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
-/*
+/**/
     page
         .click('@subSelector');
         client.pause(1000);
@@ -45,33 +55,9 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click(page.el('@scaSelect','4'));//   Data analysis...
     client.pause(2000);
     
-*/
+
     //Open Jurisdiction tab
     page.click(page.el('@accordianSelector','JUR'));
-/*
-    var boxes = ["State","District","Territory/Other","Region"];
-    var checkbox;
-    for(var tab=0; tab<boxes.length; tab++){
-        client.pause(1000)
-        .useXpath();
-        page.click(page.el('@jurisTab',boxes[tab]));
-        client.pause(1000)
-        .useCss();
-        checkbox = page.el('@jurisSelect',tab);
-        client.elements('css selector', checkbox,
-            function(result){
-                var repeat = Math.floor(Math.random()*result.value.length);
-                for(var i=0;i<repeat; i++){
-                    var k = Math.floor(Math.random()*result.value.length);
-                    this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
-                        page.click("label[for='"+result.value+"']");
-                    });
-                }
-            });
-    }
-*/
-    
-    
 
     client.pause(1000)
     .useXpath();
@@ -85,13 +71,7 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     client.elements('css selector', checkbox,
         function(result){
-            var repeat = Math.floor(Math.random()*result.value.length);
-            for(var i=0;i<repeat; i++){
-                var k = Math.floor(Math.random()*result.value.length);
-                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result.value+"']");
-                });
-            }
+            clickBoxes(result,page,client);
         });
 
     client.pause(1000)
@@ -108,13 +88,7 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            var repeat = Math.floor(Math.random()*result.value.length);
-            for(var i=0;i<repeat; i++){
-                var k = Math.floor(Math.random()*result.value.length);
-                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result.value+"']");
-                });
-            }
+            clickBoxes(result,page,client);
         });
 
     client.pause(1000)
@@ -131,13 +105,7 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            var repeat = Math.floor(Math.random()*result.value.length);
-            for(var i=0;i<repeat; i++){
-                var k = Math.floor(Math.random()*result.value.length);
-                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result.value+"']");
-                });
-            }
+            clickBoxes(result,page,client);
         });
 
     client.pause(1000)
@@ -153,17 +121,11 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            var repeat = Math.floor(Math.random()*result.value.length);
-            for(var i=0;i<repeat; i++){
-                var k = Math.floor(Math.random()*result.value.length);
-                this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
-                    page.click("label[for='"+result.value+"']");
-                });
-            }
+            clickBoxes(result,page,client);
         });
+//*/ 
 
-
- /*   //VARIABLE Tab
+ /**/   //VARIABLE Tab
     client.pause(1000);
         page.click(page.el('@accordianSelector','VAR'));
     client.pause(1000);
@@ -175,30 +137,32 @@ module.exports = { // addapted from: https://git.io/vodU0
     page
         .click(page.el('@variableSearch','B013801'))
     //Combine Variable Categories
-        .click('combine-var-modal')
-        .click('label[for="cvar2"')
-        .click('label[for="cvar3"');
+        .click('combine-var-modal');
+    client.pause(500);
+    page
+        .click('label[for="cvar2"]')
+        .click('label[for="cvar3"]');
     client
-        .assert.attributeEquals('button[aria-labelledby="create_btn_var"','disabled','true','Create button is disabled')
+        .assert.attributeEquals('button[aria-labelledby="create_btn_var"]','disabled','true','Create button is disabled')
         .setValue('#varCombName','More than 10');
     page
-        .click('button[aria-labelledby="create_btn_var"')
+        .click('button[aria-labelledby="create_btn_var"]')
         .click('ul.modal-action-buttons > li > button.submit-button');
 
     client.pause(1500);
     //Create Crosstab
     page
         .click('create-crosstab-modal');
-    client.useXpath().pause(600);
+    client.useXpath().pause(500);
     page
         .click(page.el('@crosstab','1'))
         .click(page.el('@crosstab','2'));
 
     client.useCss()
-        .assert.attributeEquals('button[aria-labelledby="create_btn_ctab"','disabled','true','Create button is disabled')
+        .assert.attributeEquals('button[aria-labelledby="create_btn_ctab"]','disabled','true','Create button is disabled')
         .setValue('#varCrtName','Books in home by gender');
     page
-        .click('button[aria-labelledby="create_btn_ctab"')
+        .click('button[aria-labelledby="create_btn_ctab"]')
         .click('ul.modal-action-buttons > li > button.submit-button');
 
 
@@ -210,21 +174,26 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click('@percentiles')
 
         //Decimal places = 2
-        .click('global-format-options')
+        .click('global-format-options');
+    client.pause(500);
+    page
         .click('global-options-window > div > div.modal-window-content > div:nth-child(4) > ul > li:nth-child(3) > label')
         .click('button.submit-button');
 
-    client.expect.element("button[aria-describedby='createReportReadingText'").to.not.have.attribute('disabled');
+    client.expect.element("button[aria-describedby='createReportReadingText']").to.not.have.attribute('disabled');
 
-    page.click("button[aria-describedby='createReportReadingText'");
+    page.click("div.criteria-button-lower > button[aria-describedby='createReportReadingText']");
 
     //Show report data for first report
     page
         .click('#report_0 > div.report-header > div > div.text-right > button.show-report-options')
         .waitForElementVisible('@findTable',200000);
-    
+    client
+        .resizeWindow(2000,1160)
+        .moveToElement('div.dataTableContainer > div > div > div > table',0,300)
+        .saveScreenshot(config.imgpath(client) + 'finalTable.png');
 
-*/
+
     client.pause(8000);
 
     client.end();
