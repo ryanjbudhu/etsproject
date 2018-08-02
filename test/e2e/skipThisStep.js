@@ -12,11 +12,11 @@ module.exports = { // addapted from: https://git.io/vodU0
 
               // How to save a screenshot:
               //.saveScreenshot(config.imgpath(browser) + 'nightwatch-roolz.png')
-    
+
         // Skip entering criteria and go to xplore page with no filters.
         .click('@skipStep')
         .waitForElementVisible('.modal-dialog')
-        .assert.urlEquals("https://www.nationsreportcard.gov/ndecore/xplore/NDE")
+        .assert.urlEquals("http://poseidon.research.ets.org/ndecoretest/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
 /*
