@@ -19,7 +19,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .assert.urlEquals("https://www.nationsreportcard.gov/ndecore/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
-/**/
+/*
     page
         .click('@subSelector');
         client.pause(1000);
@@ -45,14 +45,38 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click(page.el('@scaSelect','4'));//   Data analysis...
     client.pause(2000);
     
-
+*/
     //Open Jurisdiction tab
-    var checkbox = page.el('@jurisSelect','1');
-    page
-        .click(page.el('@accordianSelector','JUR'));
+    page.click(page.el('@accordianSelector','JUR'));
+/*
+    var boxes = ["State","District","Territory/Other","Region"];
+    var checkbox;
+    for(var tab=0; tab<boxes.length; tab++){
+        client.pause(1000)
+        .useXpath();
+        page.click(page.el('@jurisTab',boxes[tab]));
+        client.pause(1000)
+        .useCss();
+        checkbox = page.el('@jurisSelect',tab);
+        client.elements('css selector', checkbox,
+            function(result){
+                var repeat = Math.floor(Math.random()*result.value.length);
+                for(var i=0;i<repeat; i++){
+                    var k = Math.floor(Math.random()*result.value.length);
+                    this.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
+                        page.click("label[for='"+result.value+"']");
+                    });
+                }
+            });
+    }
+*/
+    
+    
 
     client.pause(1000)
     .useXpath();
+
+    var checkbox = page.el('@jurisSelect','1');
 
     page.click(page.el('@jurisTab','State'));
 
@@ -138,8 +162,8 @@ module.exports = { // addapted from: https://git.io/vodU0
             }
         });
 
-/**/
-    //VARIABLE Tab
+
+ /*   //VARIABLE Tab
     client.pause(1000);
         page.click(page.el('@accordianSelector','VAR'));
     client.pause(1000);
@@ -200,7 +224,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .waitForElementVisible('@findTable',200000);
     
 
-
+*/
     client.pause(8000);
 
     client.end();
