@@ -57,7 +57,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click(page.el('@scaSelect','4'));//   Data analysis...
     client.pause(2000);
     
-
+    page.assert.title('NDE Core Web');
     //Open Jurisdiction tab
     page.click(page.el('@accordianSelector','JUR'));
 
@@ -184,11 +184,13 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     client.expect.element("button[aria-describedby='createReportReadingText']").to.not.have.attribute('disabled');
 
-    page.click("div.criteria-button-lower button.submit-button");
+    page
+        .click("div.criteria-button-lower button.submit-button[aria-describedby]")
+        .waitForElementVisible('#report_0');
 
     //Show report data for first report
     page
-        .click('#report_0 > div.report-header > div > div.text-right > button.show-report-options')
+        .click('#report_0 button.show-report-options')
         .waitForElementVisible('@findTable',900000);
     client
         .resizeWindow(2000,1160)
