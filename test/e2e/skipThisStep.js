@@ -1,5 +1,6 @@
 var config = require('../../nightwatch.conf.js');
 var config = require('../../poseidon.conf.js');
+var myConfig = require('../../poseidonTest.js');
 
 function clickBoxes(result,page,client){
     var repeat = Math.floor(Math.random()*result.value.length);
@@ -19,14 +20,15 @@ module.exports = { // addapted from: https://git.io/vodU0
     page.navigate()   // Navigate to landing page and check the title of the page.
         .waitForElementVisible('body')
         .assert.title('NDE Core Web')
-
+        .waitForElementVisible('@skipStep')
+    
               // How to save a screenshot:
               //.saveScreenshot(config.imgpath(browser) + 'nightwatch-roolz.png')
 
         // Skip entering criteria and go to xplore page with no filters.
         .click('@skipStep')
         .waitForElementVisible('.modal-dialog')
-        .assert.urlEquals(client.launch_url+"/xplore/NDE")
+        .assert.urlEquals(myConfig.launch_url+"/xplore/NDE")
         .click('.submit-button') //Click accept terms button
         .waitForElementVisible('@subSelector');
 /**/
@@ -182,15 +184,15 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     client.expect.element("button[aria-describedby='createReportReadingText']").to.not.have.attribute('disabled');
 
-    page.click("div.criteria-button-lower > button[aria-describedby='createReportReadingText']");
+    page.click("div.criteria-button-lower button.submit-button");
 
     //Show report data for first report
     page
         .click('#report_0 > div.report-header > div > div.text-right > button.show-report-options')
-        .waitForElementVisible('@findTable',200000);
+        .waitForElementVisible('@findTable',900000);
     client
         .resizeWindow(2000,1160)
-        .moveToElement('div.dataTableContainer > div > div > div > table',0,300)
+        .moveToElement('div.dataTableContainer table',0,300)
         .saveScreenshot(config.imgpath(client) + 'finalTable.png');
 
 

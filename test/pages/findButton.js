@@ -1,6 +1,8 @@
+var myConfig = require('../../poseidonTest.js');
+
 module.exports = {
     url: function () {
-        return this.api.launch_url;
+        return myConfig.launch_url;
     },
     elements: {
             skipStep: {
