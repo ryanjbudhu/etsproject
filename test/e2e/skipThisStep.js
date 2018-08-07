@@ -36,56 +36,56 @@ module.exports = { // addapted from: https://git.io/vodU0
         .waitForElementVisible('@subSelector');
 /**/
     page
-        .click('@subSelector');
-        client.pause(1000);
-    page
-        .click(page.el('@subSelect','4'));//   Mathematics
-    client.pause(2000);
-    page
-        .click('@graSelector');
-        client.pause(1000);
-    page
-        .click(page.el('@graSelect','1'));//   Grade 4
-    client.pause(2000);
-    page    
-        .click('@yearSelector');
-        client.pause(1000);
-    page
-        .click(page.el('@yearSelect','3'));//  2015
-    client.pause(2000);
-    page
-        .click('@scaSelector');
-    client.pause(1000);
-    page
-        .click(page.el('@scaSelect','4'));//   Data analysis...
-    client.pause(2000);
+        .click('@subSelector')
+        .pagePause(client,1000)
     
-    page.assert.title('NDE Core Web');
+        .click(page.el('@subSelect','4'))//   Mathematics
+        .pagePause(client,2000)
+    
+        .click('@graSelector')
+        .pagePause(client,1000)
+    
+        .click(page.el('@graSelect','1'))//   Grade 4
+    .pagePause(client,2000);
+        
+        .click('@yearSelector')
+        .pagePause(client,1000)
+    
+        .click(page.el('@yearSelect','3'))//  2015
+    .pagePause(client,2000);
+    
+        .click('@scaSelector')
+    .pagePause(client,1000)
+    
+        .click(page.el('@scaSelect','4'))//   Data analysis...
+    .pagePause(client,2000);
+    
+    .assert.title('NDE Core Web')
     //Open Jurisdiction tab
-    page.click(page.el('@accordianSelector','JUR'));
+    .click(page.el('@accordianSelector','JUR'))
 
-    client.pause(1000)
-    .useXpath();
+    .pagePause(client,1000);
+    client.useXpath();
 
     var checkbox = page.el('@jurisSelect','1');
 
     page.click(page.el('@jurisTab','State'));
 
-    client.pause(1000)
+    client.pause(client,1000)
     .useCss();
 
     client.elements('css selector', checkbox,
         function(result){
             clickBoxes(result,page,client);
-        });
+        })
 
-    client.pause(1000)
+    .pause(1000)
     .useXpath();
 
-        page.click(page.el('@jurisTab','District'));
+        page.click(page.el('@jurisTab','District'))
 
-    client.pause(1000)
-    .useCss();
+    .pagePause(client,1000);
+    client.useCss();
 
     page.assert.title('NDE Core Web');
     checkbox = page.el('@jurisSelect','2');
@@ -94,15 +94,15 @@ module.exports = { // addapted from: https://git.io/vodU0
         .elements('css selector', checkbox,
         function(result){
             clickBoxes(result,page,client);
-        });
+        })
 
-    client.pause(1000)
+    .pause(client,1000)
     .useXpath();
 
-        page.click(page.el('@jurisTab','Territory/Other'));
+        page.click(page.el('@jurisTab','Territory/Other'))
 
-    client.pause(1000)
-    .useCss();
+    .pagePause(client,1000);
+    client.useCss();
 
     page.assert.title('NDE Core Web');
     checkbox = page.el('@jurisSelect','3');
@@ -111,14 +111,14 @@ module.exports = { // addapted from: https://git.io/vodU0
         .elements('css selector', checkbox,
         function(result){
             clickBoxes(result,page,client);
-        });
+        })
 
-    client.pause(1000)
+    .pause(client,1000)
     .useXpath();
 
-        page.click(page.el('@jurisTab','Region'));
+        page.click(page.el('@jurisTab','Region'))
 
-    client.pause(1000)
+    .pagePause(client,1000)
     .useCss();
     
     page.assert.title('NDE Core Web');
@@ -131,20 +131,20 @@ module.exports = { // addapted from: https://git.io/vodU0
 //*/ 
 
  /**/   //VARIABLE Tab
-    client.pause(1000);
-        page.click(page.el('@accordianSelector','VAR'));
-    client.pause(1000);
-    page.click("label[for='GENDER|Gender']");
-    client.setValue('input[aria-labelledby="var_searchInputTxt"]','books');
-    page.click('span[aria-labelledby="var_searchBtn"]');
-   
-    client.pause(3000);
     page
+        .pagePause(client,1000)
+            .click(page.el('@accordianSelector','VAR'))
+        .pagePause(client,1000)
+        .click("label[for='GENDER|Gender']");
+    client.setValue('input[aria-labelledby="var_searchInputTxt"]','books');
+    page.click('span[aria-labelledby="var_searchBtn"]')
+   
+    .pagePause(client,3000)
         .click(page.el('@variableSearch','B013801'))
     //Combine Variable Categories
-        .click('combine-var-modal');
-    client.pause(500);
-    page
+        .click('combine-var-modal')
+    .pagePause(client,500)
+    
         .click('label[for="cvar2"]')
         .click('label[for="cvar3"]');
     client
@@ -152,9 +152,9 @@ module.exports = { // addapted from: https://git.io/vodU0
         .setValue('#varCombName','More than 10');
     page
         .click('button[aria-labelledby="create_btn_var"]')
-        .click('ul.modal-action-buttons > li > button.submit-button');
+        .click('ul.modal-action-buttons > li > button.submit-button')
 
-    client.pause(1500);
+    .pagePause(client,1500);
     //Create Crosstab
     page
         .click('create-crosstab-modal');
@@ -168,10 +168,10 @@ module.exports = { // addapted from: https://git.io/vodU0
         .setValue('#varCrtName','Books in home by gender');
     page
         .click('button[aria-labelledby="create_btn_ctab"]')
-        .click('ul.modal-action-buttons > li > button.submit-button');
+        .click('ul.modal-action-buttons > li > button.submit-button')
 
 
-    client.pause(1000);
+    .pagePause(client,1000);
     //STATISTIC Tab
     page
         .click(page.el('@accordianSelector','STAT'))
@@ -179,8 +179,8 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click('@percentiles')
 
         //Decimal places = 2
-        .click('global-format-options');
-    client.pause(500);
+        .click('global-format-options')
+    .pagePause(client,500);
     page
         .click('global-options-window > div > div.modal-window-content > div:nth-child(4) > ul > li:nth-child(3) > label')
         .click('button.submit-button');
@@ -198,10 +198,10 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .resizeWindow(2000,1160)
         .moveToElement('div.dataTableContainer table',0,300)
-        .saveScreenshot(config.imgpath(client) + 'finalTable.png');
+        .saveScreenshot(config.imgpath(client) + 'finalTable.png')
 
 
-    client.pause(8000);
+    .pause(8000);
 
     client.end();
   }
