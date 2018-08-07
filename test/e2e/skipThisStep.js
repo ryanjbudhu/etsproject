@@ -46,19 +46,19 @@ module.exports = { // addapted from: https://git.io/vodU0
         .pagePause(client,1000)
     
         .click(page.el('@graSelect','1'))//   Grade 4
-    .pagePause(client,2000);
+    .pagePause(client,2000)
         
         .click('@yearSelector')
         .pagePause(client,1000)
     
         .click(page.el('@yearSelect','3'))//  2015
-    .pagePause(client,2000);
+    .pagePause(client,2000)
     
         .click('@scaSelector')
     .pagePause(client,1000)
     
         .click(page.el('@scaSelect','4'))//   Data analysis...
-    .pagePause(client,2000);
+    .pagePause(client,2000)
     
     .assert.title('NDE Core Web')
     //Open Jurisdiction tab
