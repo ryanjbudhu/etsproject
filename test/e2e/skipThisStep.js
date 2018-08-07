@@ -9,7 +9,7 @@ function clickBoxes(result,page,client){
         client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
             page.click("label[for='"+result.value+"']");
         });
-        client.elementIdAttributeresult.value[i].ELEMENT, 'for', function(result){
+        client.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
             page.click("label[for='"+result.value+"']");
         }
     }
