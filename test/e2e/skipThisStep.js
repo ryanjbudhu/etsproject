@@ -11,7 +11,7 @@ function clickBoxes(result,page,client){
         });
         client.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
             page.click("label[for='"+result.value+"']");
-        }
+        });
     }
 }
 
