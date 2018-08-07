@@ -3,7 +3,7 @@ var config = require('../../poseidon.conf.js');
 var myConfig = require('../../poseidonTest.js');
 
 function clickBoxes(result,page,client){
-    var repeat = Math.floor(Math.random()*result.value.length);
+    var repeat = Math.floor(Math.random()*(result.value.length/2));
     for(var i=0;i<repeat; i++){
         var k = Math.floor(Math.random()*(result.value.length-repeat))+repeat;
         client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
