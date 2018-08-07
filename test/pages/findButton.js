@@ -64,7 +64,7 @@ module.exports = {
                 selector: '//*[@id="combineCTabTreeView"]/ul/li[%s]/div/span[1]/label'
        },
             findTable: {
-                selector: "#report_0 > div.reportListTabsContainer > div.reports-list-tabContent > div[ng-if=\"tabContent.itemValue == 'DATATABLE'\"]  > ndedata-table > div > div.data-table-section > div[ng-hide]"
+                selector: "#report_0 > div.reportListTabsContainer div[ng-if=\"tabContent.itemValue == 'DATATABLE'\"]  > ndedata-table > div > div.data-table-section > div[ng-hide]"
         }
     },
     commands:   [{

@@ -5,10 +5,13 @@ var myConfig = require('../../poseidonTest.js');
 function clickBoxes(result,page,client){
     var repeat = Math.floor(Math.random()*result.value.length);
     for(var i=0;i<repeat; i++){
-        var k = Math.floor(Math.random()*result.value.length);
+        var k = Math.floor(Math.random()*(result.value.length-repeat))+repeat;
         client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
             page.click("label[for='"+result.value+"']");
         });
+        client.elementIdAttributeresult.value[i].ELEMENT, 'for', function(result){
+            page.click("label[for='"+result.value+"']");
+        }
     }
 }
 
