@@ -198,10 +198,11 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .resizeWindow(2000,1160)
         .moveToElement('div.dataTableContainer table',0,300)
-        .saveScreenshot(config.imgpath(client) + 'finalTable.png')
+        .saveScreenshot(config.imgpath(client) + 'finalTable.png');
 
+        
 
-    .pause(8000);
+    page.pagePause(client,8000);
 
     client.end();
   }
