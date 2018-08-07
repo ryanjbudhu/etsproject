@@ -4,10 +4,7 @@ module.exports = {
     url: function () {
         return myConfig.launch_url;
     },
-    pagePause: function(browser,length){
-        browser.pause(length);
-        return this;
-    },
+    
     elements: {
             skipStep: {
                 selector: "//a[contains(text(), 'SKIP\ THIS\ STEP')]",
@@ -76,6 +73,10 @@ module.exports = {
             var util = require('util');
             var element = this.elements[elementName.slice(1)];
             return util.format(element.selector,data);
+        },
+        pagePause: function(browser,length){
+            browser.pause(length);
+            return this;
         }
     }]
 }
