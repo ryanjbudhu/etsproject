@@ -118,8 +118,8 @@ module.exports = { // addapted from: https://git.io/vodU0
 
         page.click(page.el('@jurisTab','Region'))
 
-    .pagePause(client,1000)
-    .useCss();
+    .pagePause(client,1000);
+    client.useCss();
     
     page.assert.title('NDE Core Web');
     checkbox = page.el('@jurisSelect','4');
