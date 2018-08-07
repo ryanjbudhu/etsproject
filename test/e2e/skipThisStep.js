@@ -71,7 +71,7 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     page.click(page.el('@jurisTab','State'));
 
-    client.pause(client,1000)
+    client.pause(1000)
     .useCss();
 
     client.elements('css selector', checkbox,
@@ -96,7 +96,7 @@ module.exports = { // addapted from: https://git.io/vodU0
             clickBoxes(result,page,client);
         })
 
-    .pause(client,1000)
+    .pause(1000)
     .useXpath();
 
         page.click(page.el('@jurisTab','Territory/Other'))
@@ -113,7 +113,7 @@ module.exports = { // addapted from: https://git.io/vodU0
             clickBoxes(result,page,client);
         })
 
-    .pause(client,1000)
+    .pause(1000)
     .useXpath();
 
         page.click(page.el('@jurisTab','Region'))

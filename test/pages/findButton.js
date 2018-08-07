@@ -4,7 +4,6 @@ module.exports = {
     url: function () {
         return myConfig.launch_url;
     },
-    
     elements: {
             skipStep: {
                 selector: "//a[contains(text(), 'SKIP\ THIS\ STEP')]",
