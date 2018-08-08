@@ -65,13 +65,21 @@ module.exports = {
        },
             findTable: {
                 selector: "#report_0 > div.reportListTabsContainer div[ng-if=\"tabContent.itemValue == 'DATATABLE'\"]  > ndedata-table > div > div.data-table-section > div[ng-hide]"
-        }
+        },
+            checkTableRow: {
+                selector: "ndedata-table tbody tr:nth-child(%s) td:nth-child(%s)"
+            }
     },
     commands:   [{
         el: function(elementName,data){
             var util = require('util');
             var element = this.elements[elementName.slice(1)];
             return util.format(element.selector,data);
+        },
+        el2: function(elementName,data1,data2){
+            var util = require('util');
+            var element = this.elements[elementName.slice(1)];
+            return util.format(element.selector,data1,data2);
         },
         pagePause: function(browser,length){
             browser.pause(length);

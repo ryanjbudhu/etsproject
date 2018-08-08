@@ -15,6 +15,16 @@ function clickBoxes(result,page,client){
     }
 }
 
+function checkRow(row,child,page,client){
+    for(var i=0;i<15;i++){
+        //console.log(row[i]);
+        //var column = client.element("css selector",page.el2("@checkTableRow",1,i+1));
+        var text = page.el2("@checkTableRow",child,i+1);
+        page.isVisible(text);
+        page.assert.containsText(text,row[i]);
+    }
+}
+
 module.exports = { // addapted from: https://git.io/vodU0
   '@tags': ['skipThisStep'],
   'Skip This Step': (client) => {
@@ -200,7 +210,10 @@ module.exports = { // addapted from: https://git.io/vodU0
         .moveToElement('div.dataTableContainer table',0,300)
         .saveScreenshot(config.imgpath(client) + 'finalTable.png');
 
-        
+    checkRow(myConfig.national2017.firstRow,1,page,client);
+    //checkRow(myConfig.national2017.secondRow,2,page,client);
+    //checkRow(myConfig.alabama2017.firstRow,4,page,client);
+    //checkRow(myConfig.alaska2017.secondRow,8,page,client);
 
     page.pagePause(client,8000);
 
