@@ -191,7 +191,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         //Decimal places = 2
         .click('global-format-options')
     .pagePause(client,500);
-    page
+    page//change
         .click('global-options-window > div > div.modal-window-content > div:nth-child(4) > ul > li:nth-child(3) > label')
         .click('button.submit-button');
 
@@ -211,10 +211,10 @@ module.exports = { // addapted from: https://git.io/vodU0
         .saveScreenshot(config.imgpath(client) + 'finalTable.png');
 
     checkRow(myConfig.national2017.firstRow,1,page,client);
-    //checkRow(myConfig.national2017.secondRow,2,page,client);
-    //checkRow(myConfig.alabama2017.firstRow,4,page,client);
-    //checkRow(myConfig.alaska2017.secondRow,8,page,client);
-
+    checkRow(myConfig.national2017.secondRow,2,page,client);
+    checkRow(myConfig.alabama2017.firstRow,4,page,client);
+    checkRow(myConfig.alaska2017.secondRow,8,page,client);
+ 
     page.pagePause(client,8000);
 
     client.end();
