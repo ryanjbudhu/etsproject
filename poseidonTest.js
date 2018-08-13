@@ -1,7 +1,13 @@
 
 module.exports = {
-    launch_url: "http://poseidon.research.ets.org/ndecoretest",
-    //launch_url: "https://www.nationsreportcard.gov/ndecore",
+    //launch_url: "http://poseidon.research.ets.org/ndecoretest",
+    launch_url: "https://www.nationsreportcard.gov/ndecore",
+    jurisdictionProperties: ["national","state"],
+    jurisdictionNames: {
+        national: ["National", "National public", "National private"],
+        state: ["Alabama", "Alaska", "Arizona", "Arkansas"]
+    },
+    
     national2017: {//ndedata-table tbody tr:nth-child(1)
         firstRow: ["2017","National","0-10 books","224.69",
                     "185.56","204.68","225.63","245.34","261.68",

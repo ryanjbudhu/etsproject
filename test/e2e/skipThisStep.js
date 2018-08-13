@@ -2,18 +2,29 @@ var config = require('../../nightwatch.conf.js');
 var config = require('../../poseidon.conf.js');
 var myConfig = require('../../poseidonTest.js');
 
-function clickBoxes(result,page,client){
-    var repeat = Math.floor(Math.random()*(result.value.length/2));
-    for(var i=0;i<repeat; i++){
-        var k = Math.floor(Math.random()*(result.value.length-repeat))+repeat;
+function clickBoxes(result,page,client,tabIDX){
+    //var repeat = Math.floor(Math.random()*(result.value.length/2));
+    //var current = [];
+    var currentTestStrings = myConfig.jurisdictionNames["state"];//myConfig.jurisdictionProperties[tabIDX]];
+    for(var i=0;i<4; i++){
+        /*var k = Math.floor(Math.random()*(result.value.length-repeat))+repeat;
         client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
             page.click("label[for='"+result.value+"']");
-        });
+            
+        });*/
         client.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
             page.click("label[for='"+result.value+"']");
+            var text = "label[for='"+result.value+"']";
+            client.getText("css selector",text, function (x){
+                console.log(x.value);
+                
+            });
+            if(tab==1){client.expect.element(text).text.to.equal(currentTestStrings[i]);}
+            
         });
     }
 }
+
 
 function checkRow(row,child,page,client){
     for(var i=0;i<15;i++){
@@ -86,7 +97,7 @@ module.exports = { // addapted from: https://git.io/vodU0
 
     client.elements('css selector', checkbox,
         function(result){
-            clickBoxes(result,page,client);
+            clickBoxes(result,page,client,1);
         })
 
     .pause(1000)
@@ -103,7 +114,7 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            clickBoxes(result,page,client);
+            clickBoxes(result,page,client,2);
         })
 
     .pause(1000)
@@ -120,7 +131,7 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            clickBoxes(result,page,client);
+            clickBoxes(result,page,client,3);
         })
 
     .pause(1000)
@@ -136,7 +147,7 @@ module.exports = { // addapted from: https://git.io/vodU0
     client
         .elements('css selector', checkbox,
         function(result){
-            clickBoxes(result,page,client);
+            clickBoxes(result,page,client,4);
         });
 //*/ 
 
