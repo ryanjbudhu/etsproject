@@ -3,25 +3,31 @@ var config = require('../../poseidon.conf.js');
 var myConfig = require('../../poseidonTest.js');
 
 function clickBoxes(result,page,client,tabIDX){
-    //var repeat = Math.floor(Math.random()*(result.value.length/2));
+    var repeat = Math.floor(Math.random()*(result.value.length/2));
     //var current = [];
     var currentTestStrings = myConfig.jurisdictionNames["state"];//myConfig.jurisdictionProperties[tabIDX]];
     for(var i=0;i<4; i++){
-        /*var k = Math.floor(Math.random()*(result.value.length-repeat))+repeat;
-        client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
-            page.click("label[for='"+result.value+"']");
-            
-        });*/
-        client.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
-            page.click("label[for='"+result.value+"']");
-            var text = "label[for='"+result.value+"']";
-            client.getText("css selector",text, function (x){
-                console.log(x.value);
+        if(tabIDX!='1'){
+            var k = Math.floor(Math.random()*(result.value.length-repeat))+repeat;
+            client.elementIdAttribute(result.value[k].ELEMENT, 'for', function(result){
+                page.click("label[for='"+result.value+"']");
                 
             });
-            if(tab==1){client.expect.element(text).text.to.equal(currentTestStrings[i]);}
+        }
+        else{
+            client.elementIdAttribute(result.value[i].ELEMENT, 'for', function(result){
+                page.click("label[for='"+result.value+"']");
+                var txt = "label[for='"+result.value+"']";
+                /*client.getText("css selector",text, function (x){
+                    console.log(x.value);
+                    
+                });*/
+            });
+        }
+
+        //if(tabIDX==1){client.expect.element(text).text.to.equal(currentTestStrings[i]);}
             
-        });
+        
     }
 }
 
@@ -60,25 +66,25 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click('@subSelector')
         .pagePause(client,1000)
     
-        .click(page.el('@subSelect','4'))//   Mathematics
+        .click(page.el('@subSelect',myConfig.subjectChoice))
         .pagePause(client,2000)
     
         .click('@graSelector')
         .pagePause(client,1000)
     
-        .click(page.el('@graSelect','1'))//   Grade 4
+        .click(page.el('@graSelect',myConfig.gradeChoice))
     .pagePause(client,2000)
         
         .click('@yearSelector')
         .pagePause(client,1000)
     
-        .click(page.el('@yearSelect','3'))//  2015
+        .click(page.el('@yearSelect',myConfig.yearChoice))
     .pagePause(client,2000)
     
         .click('@scaSelector')
     .pagePause(client,1000)
     
-        .click(page.el('@scaSelect','4'))//   Data analysis...
+        .click(page.el('@scaSelect',myConfig.scaleChoice))
     .pagePause(client,2000)
     
     .assert.title('NDE Core Web')
