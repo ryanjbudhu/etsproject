@@ -68,6 +68,27 @@ module.exports = {
         },
             checkTableRow: {
                 selector: "ndedata-table tbody tr:nth-child(%s) td:nth-child(%s)"
+        },
+            reportTabs: {
+                selector: "[aria-labelledby=tabMsg_0_%s]"
+        },
+            sigTestJuri: {
+                selector: "jurisdiction-wizard .k-top label"
+        },
+            sigTestVariFirst: {
+                selector: "variable-wizard .k-top label"
+        },
+            sigTestVariLast: {
+                selector: "variable-wizard .k-last .k-bot label"
+        },
+            sigTestYear: {
+                selector: "year-wizard .k-top label"
+        },
+            sigTestStat: {
+                selector: "statistic-wizard .k-top label"
+        },
+            genSigTest: {
+                selector: "[aria-labelledby=sig_test_%s]"
             }
     },
     commands:   [{

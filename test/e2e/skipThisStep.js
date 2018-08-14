@@ -231,7 +231,20 @@ module.exports = { // addapted from: https://git.io/vodU0
     checkRow(myConfig.national2017.secondRow,2,page,client);
     checkRow(myConfig.alabama2017.firstRow,4,page,client);
     checkRow(myConfig.alaska2017.secondRow,8,page,client);
+
+    //Check Significance Test
+    page
+        .click(page.el("@reportTabs","3"))
+        .click("@sigTestJuri")
+        .click("@sigTestVariFirst")
+        .click("@sigTestVariLast")
+        .click(page.el("@genSigTest","0"));
  
+    /*client
+        .resizeWindow(2000,1160)
+        .moveToElement('sigwizard-table table',0,300)
+        .saveScreenshot(config.imgpath(client) + 'finalTable.png');*/
+
     page.pagePause(client,8000);
 
     client.end();
