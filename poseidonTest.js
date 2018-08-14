@@ -1,7 +1,7 @@
 
 module.exports = {
-    //launch_url: "http://poseidon.research.ets.org/ndecoretest",
-    launch_url: "https://www.nationsreportcard.gov/ndecore",
+    launch_url: "http://poseidon.research.ets.org/ndecoretest",
+    //launch_url: "https://www.nationsreportcard.gov/ndecore",
 
     subjectChoice: "4",
     //1Civics,2Econ,3Geo,4Mathematics,5Music,6Reading,7Science,8Tech&Eng,9USHistory,
