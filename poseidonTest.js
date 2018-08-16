@@ -1,8 +1,8 @@
 
 module.exports = {
-    //launch_url: "http://poseidon.research.ets.org/ndecoretest",
-    launch_url: "https://www.nationsreportcard.gov/ndecore",
-    //launch_url: "http://poseidon.research.ets.org/ndecorebranch",
+    launch_url: "http://poseidon.research.ets.org/ndecoretest",     //Test site
+    //launch_url: "https://www.nationsreportcard.gov/ndecore",      //Production site
+    //launch_url: "http://poseidon.research.ets.org/ndecorebranch", //Alternate test site
 
 
     subjectChoice: "4",
