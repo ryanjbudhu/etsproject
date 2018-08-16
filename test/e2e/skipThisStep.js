@@ -238,12 +238,12 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click("@sigTestJuri")
         .click("@sigTestVariFirst")
         .click("@sigTestVariLast")
-        .click(page.el("@genSigTest","0"));
+        .click(page.el("@genSigTest","0"))
+        .waitForElementVisible('sigwizard-table',500000);
  
-    /*client
-        .resizeWindow(2000,1160)
+    client
         .moveToElement('sigwizard-table table',0,300)
-        .saveScreenshot(config.imgpath(client) + 'finalTable.png');*/
+        .saveScreenshot(config.imgpath(client) + 'finalTable.png');
 
     page.pagePause(client,8000);
 

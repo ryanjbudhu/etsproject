@@ -79,7 +79,7 @@ module.exports = {
                 selector: "variable-wizard .k-top label"
         },
             sigTestVariLast: {
-                selector: "variable-wizard .k-last .k-bot label"
+                selector: "variable-wizard .k-treeview-lines > li.k-last div.k-bot label"
         },
             sigTestYear: {
                 selector: "year-wizard .k-top label"
