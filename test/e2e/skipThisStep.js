@@ -235,15 +235,30 @@ module.exports = { // addapted from: https://git.io/vodU0
     //Check Significance Test
     page
         .click(page.el("@reportTabs","3"))
-        .click("@sigTestJuri")
-        .click("@sigTestVariFirst")
-        .click("@sigTestVariLast")
-        .click(page.el("@genSigTest","0"))
+        .click("@testJuri")
+        .click("@testVariFirst")
+        .click("@testVariLast")
+        .click(page.el("@genTest","sig"))
         .waitForElementVisible('sigwizard-table',500000);
  
     client
         .moveToElement('sigwizard-table table',0,300)
-        .saveScreenshot(config.imgpath(client) + 'finalTable.png');
+        .saveScreenshot(config.imgpath(client) + 'finalSigTable.png')
+        .pause(1500);
+
+    //Check Gap Analysis
+    page
+        .click(page.el("@reportTabs","4"))
+        .pagePause(client,2000)
+        .click("@testJuri")
+        .click("@testVariFirst")
+        .click("@testVariLast")
+        .click(page.el("@genTest","gap"))
+        .waitForElementVisible('sigwizard-table',50000);
+
+    client
+        .moveToElement('sigwizard-table table',0,300)
+        .saveScreenshot(config.imgpath(client) + 'finalGapTable.png');
 
     page.pagePause(client,8000);
 

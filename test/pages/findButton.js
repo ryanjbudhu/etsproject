@@ -72,24 +72,24 @@ module.exports = {
             reportTabs: {
                 selector: "[aria-labelledby=tabMsg_0_%s]"
         },
-            sigTestJuri: {
+            testJuri: {
                 selector: "jurisdiction-wizard .k-top label"
         },
-            sigTestVariFirst: {
+            testVariFirst: {
                 selector: "variable-wizard .k-top label"
         },
-            sigTestVariLast: {
+            testVariLast: {
                 selector: "variable-wizard .k-treeview-lines > li.k-last div.k-bot label"
         },
-            sigTestYear: {
+            testYear: {
                 selector: "year-wizard .k-top label"
         },
-            sigTestStat: {
+            testStat: {
                 selector: "statistic-wizard .k-top label"
         },
-            genSigTest: {
-                selector: "[aria-labelledby=sig_test_%s]"
-            }
+            genTest: {
+                selector: "[aria-labelledby=%s_test_0]"
+        }
     },
     commands:   [{
         el: function(elementName,data){
