@@ -73,16 +73,16 @@ module.exports = {
                 selector: "[aria-labelledby=tabMsg_0_%s]"
         },
             testJuri: {
-                selector: "jurisdiction-wizard .k-top label"
+                selector: "%s-wizard jurisdiction-wizard .k-top.k-bot label"
         },
             testVariFirst: {
-                selector: "variable-wizard .k-top label"
+                selector: "%s-wizard variable-wizard .k-top label"
         },
             testVariLast: {
-                selector: "variable-wizard .k-treeview-lines > li.k-last div.k-bot label"
+                selector: "%s-wizard variable-wizard .k-treeview-lines > li.k-last > div.k-bot > span label"
         },
             testYear: {
-                selector: "year-wizard .k-top label"
+                selector: "%s-wizard year-wizard .k-top label"
         },
             testStat: {
                 selector: "statistic-wizard .k-top label"

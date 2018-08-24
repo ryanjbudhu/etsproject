@@ -235,9 +235,9 @@ module.exports = { // addapted from: https://git.io/vodU0
     //Check Significance Test
     page
         .click(page.el("@reportTabs","3"))
-        .click("@testJuri")
-        .click("@testVariFirst")
-        .click("@testVariLast")
+        .click(page.el("@testJuri","sig"))
+        .click(page.el("@testVariFirst","sig"))
+        .click(page.el("@testVariLast","sig"))
         .click(page.el("@genTest","sig"))
         .waitForElementVisible('sigwizard-table',500000);
  
@@ -250,11 +250,11 @@ module.exports = { // addapted from: https://git.io/vodU0
     page
         .click(page.el("@reportTabs","4"))
         .pagePause(client,2000)
-        .click("@testJuri")
-        .click("@testVariFirst")
-        .click("@testVariLast")
+        .click(page.el("@testJuri","gap"))
+        .click(page.el("@testVariFirst","gap"))
+        .click(page.el("@testVariLast","gap"))
         .click(page.el("@genTest","gap"))
-        .waitForElementVisible('sigwizard-table',50000);
+        .waitForElementVisible('sigwizard-table',70000);
 
     client
         .moveToElement('sigwizard-table table',0,300)
