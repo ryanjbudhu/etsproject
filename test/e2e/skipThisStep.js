@@ -254,7 +254,7 @@ module.exports = { // addapted from: https://git.io/vodU0
         .click(page.el("@testVariFirst","gap"))
         .click(page.el("@testVariLast","gap"))
         .click(page.el("@genTest","gap"))
-        .waitForElementVisible('sigwizard-table',70000);
+        .waitForElementVisible('sigwizard-table',100000);
 
     client
         .moveToElement('sigwizard-table table',0,300)
